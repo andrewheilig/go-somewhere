@@ -89,20 +89,6 @@ function neighbors(index, size) {
   return result;
 }
 
-function boardString(board) {
-  let result = "";
-
-  for (let i = 0; i < board.length; i++) {
-    const value = board[i];
-
-    if (value === 1) result += "B";
-    else if (value === -1) result += "W";
-    else result += ".";
-  }
-
-  return result;
-}
-
 function sameBoard(a, b) {
   if (!a || !b) return false;
   if (a.length !== b.length) return false;
