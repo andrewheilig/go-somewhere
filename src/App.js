@@ -2002,7 +2002,15 @@ function App() {
           STORAGE_KEY
         );
 
-      if (!saved) return;
+      if (!saved) {
+        startTrainingFrom(
+          0,
+          MIN_SIZE,
+          0
+        );
+
+        return;
+      }
 
       const loaded =
         deserializePopulation(
@@ -2030,13 +2038,26 @@ function App() {
       setStatus(
         `Loaded generation ${loaded.generation}.`
       );
+
+      startTrainingFrom(
+        loaded.generation,
+        loaded.size,
+        loaded.generationsAtSize
+      );
     } catch (error) {
       console.error(error);
 
       setStatus(
         "Could not load saved evolution."
       );
+
+      startTrainingFrom(
+        0,
+        MIN_SIZE,
+        0
+      );
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function stopTraining() {
@@ -2072,6 +2093,18 @@ function App() {
   }
 
   function startTraining() {
+    startTrainingFrom(
+      generation,
+      curriculumSize,
+      generationsAtSize
+    );
+  }
+
+  function startTrainingFrom(
+    initialGeneration,
+    initialSize,
+    initialAtSize
+  ) {
     if (
       trainingRef.current
     ) {
@@ -2083,13 +2116,13 @@ function App() {
     setMode("train");
 
     let currentGeneration =
-      generation;
+      initialGeneration;
 
     let currentSize =
-      curriculumSize;
+      initialSize;
 
     let currentAtSize =
-      generationsAtSize;
+      initialAtSize;
 
     setStatus(
       "Evolution running..."
