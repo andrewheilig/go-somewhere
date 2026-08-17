@@ -1,9 +1,21 @@
-h1, h2, h3, h4, h5, h6, p {
+.App {
   text-align: center;
 }
 
-h1, h2, h3, h4, h5, h6 {
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
   background-color: #282c34;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,29 +28,11 @@ h1, h2, h3, h4, h5, h6 {
   color: #61dafb;
 }
 
-.play-creature-button {
-  background: #0f766e;
-  border: 2px solid #0b4f49;
-  border-radius: 6px;
-  box-shadow: 0 3px 0 #073b37, 0 8px 18px rgba(15, 118, 110, 0.28);
-  color: #ffffff;
-  cursor: pointer;
-  font-weight: 700;
-  margin: 0 4px;
-  padding: 10px 14px;
-}
-
-.play-creature-button:hover {
-  background: #115e59;
-  transform: translateY(-1px);
-}
-
-.play-creature-button:active {
-  box-shadow: 0 1px 0 #073b37, 0 4px 10px rgba(15, 118, 110, 0.24);
-  transform: translateY(2px);
-}
-
-.play-creature-button:focus-visible {
-  outline: 3px solid #f59e0b;
-  outline-offset: 3px;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
