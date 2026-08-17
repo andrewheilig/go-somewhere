@@ -2652,6 +2652,7 @@ function App() {
               </button>{" "}
 
               <button
+                className="play-creature-button"
                 onClick={
                   enterPlayMode
                 }
